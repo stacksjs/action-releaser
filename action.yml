@@ -1,0 +1,36 @@
+name: Asset Releaser
+description: Attach files to a GitHub release
+author: Your Name
+
+inputs:
+  files:
+    description: List of files to attach to the release
+    required: true
+  token:
+    description: GitHub token
+    required: false
+    default: ${{ github.token }}
+  tag:
+    description: The tag name for the release
+    required: false
+    default: ${{ github.ref_name }}
+  draft:
+    description: Create a draft release
+    required: false
+    default: 'false'
+  prerelease:
+    description: Mark as prerelease
+    required: false
+    default: 'false'
+  note:
+    description: Release notes
+    required: false
+    default: ''
+
+runs:
+  using: node20
+  main: dist/index.js
+
+branding:
+  icon: package
+  color: blue
