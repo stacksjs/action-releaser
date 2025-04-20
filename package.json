@@ -1,6 +1,5 @@
 {
   "name": "action-releaser",
-  "type": "module",
   "version": "0.0.1",
   "description": "GitHub Action to attach files to a release",
   "author": "Chris Breuer <chris@stacksjs.org>",
@@ -17,13 +16,13 @@
   "exports": {
     ".": {
       "types": "./dist/index.d.ts",
-      "import": "./dist/index.js"
+      "require": "./dist/index.js"
     },
     "./*": {
-      "import": "./dist/*"
+      "require": "./dist/*"
     }
   },
-  "module": "./dist/index.js",
+  "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": ["README.md", "action.yml", "dist"],
   "scripts": {

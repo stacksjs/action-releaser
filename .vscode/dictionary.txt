@@ -42,5 +42,6 @@ upath
 vite
 vitebook
 vitejs
+vitepress
 vue-demi
 vueus
