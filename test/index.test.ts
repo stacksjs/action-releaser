@@ -1,5 +1,4 @@
-import { afterEach, beforeEach, describe, expect, it, mock } from 'bun:test'
-import * as fs from 'node:fs'
+import { beforeEach, describe, expect, it, mock } from 'bun:test'
 import { run } from '../src/index'
 
 // Create mock functions with proper types
