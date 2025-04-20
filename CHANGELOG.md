@@ -1,4 +1,16 @@
 
+## v0.0.1...main
+
+[compare changes](https://github.com/stacksjs/action-releaser/compare/v0.0.1...main)
+
+### 🏡 Chore
+
+- Minor adjustments ([f29d7b4](https://github.com/stacksjs/action-releaser/commit/f29d7b4))
+
+### ❤️ Contributors
+
+- Chris ([@chrisbbreuer](https://github.com/chrisbbreuer))
+
 ## ...main
 
 
