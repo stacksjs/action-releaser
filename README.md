@@ -16,7 +16,7 @@ This action allows you to attach files to a GitHub release using simple glob pat
 
 ```yaml
 - name: Attach Files to Release
-  uses: stacksjs/action-releaser@v1
+  uses: stacksjs/action-releaser@v1.0.0
   with:
     files: |
       bin/app-linux-x64
@@ -69,7 +69,7 @@ jobs:
 
       # Create a release and attach files
       - name: Create Release and Attach Files
-        uses: stacksjs/action-releaser@v1
+        uses: stacksjs/action-releaser@v1.0.0
         with:
           files: |
             dist/app.zip
@@ -101,7 +101,7 @@ jobs:
 
       # Create a release and attach files
       - name: Create Release and Attach Files
-        uses: stacksjs/action-releaser@v1
+        uses: stacksjs/action-releaser@v1.0.0
         with:
           files: |
             dist/*.zip
