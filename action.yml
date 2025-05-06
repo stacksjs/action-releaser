@@ -26,6 +26,26 @@ inputs:
     description: Release notes
     required: false
     default: ''
+  homebrewFormula:
+    description: Path to the Homebrew formula template file
+    required: false
+    default: ''
+  homebrewRepo:
+    description: Repository to update the Homebrew formula in (format owner/repo)
+    required: false
+    default: ''
+  homebrewBranch:
+    description: Branch name in the Homebrew repository to commit to
+    required: false
+    default: main
+  homebrewPath:
+    description: Path in the Homebrew repository where formulas are stored
+    required: false
+    default: Formula
+  homebrewCommitFormat:
+    description: Commit message format for Homebrew formula updates
+    required: false
+    default: 'update: {{ formula }} to {{ version }}'
 
 runs:
   using: node20

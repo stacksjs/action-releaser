@@ -28,4 +28,29 @@ export interface ActionInputs {
    * Release notes
    */
   note: string
+
+  /**
+   * Path to the Homebrew formula template file
+   */
+  homebrewFormula: string
+
+  /**
+   * Repository to update the Homebrew formula in (format: owner/repo)
+   */
+  homebrewRepo: string
+
+  /**
+   * Branch name in the Homebrew repository to commit to
+   */
+  homebrewBranch: string
+
+  /**
+   * Path in the Homebrew repository where formulas are stored
+   */
+  homebrewPath: string
+
+  /**
+   * Commit message format for Homebrew formula updates
+   */
+  homebrewCommitFormat: string
 }
