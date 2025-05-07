@@ -1,6 +1,6 @@
 {
   "name": "action-releaser",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "GitHub Action to attach files to a release",
   "author": "Chris Breuer <chris@stacksjs.org>",
   "license": "MIT",
