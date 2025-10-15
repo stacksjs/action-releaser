@@ -1,3 +1,32 @@
+[Compare changes](https://github.com/stacksjs/action-releaser/compare/v1.2.4...v1.2.5)
+
+### 🐛 Bug Fixes
+
+- use local action in release workflow ([9c930e1](https://github.com/stacksjs/action-releaser/commit/9c930e1))
+
+### 🧹 Chores
+
+- release v1.2.5 ([401fb00](https://github.com/stacksjs/action-releaser/commit/401fb00))
+- update workflow to use v1.2.4 ([52ffa5f](https://github.com/stacksjs/action-releaser/commit/52ffa5f))
+
+### Contributors
+
+- Chris <chrisbreuer93@gmail.com>
+
+[Compare changes](https://github.com/stacksjs/action-releaser/compare/v1.2.4...HEAD)
+
+### 🐛 Bug Fixes
+
+- use local action in release workflow ([9c930e1](https://github.com/stacksjs/action-releaser/commit/9c930e1))
+
+### 🧹 Chores
+
+- update workflow to use v1.2.4 ([52ffa5f](https://github.com/stacksjs/action-releaser/commit/52ffa5f))
+
+### Contributors
+
+- Chris <chrisbreuer93@gmail.com>
+
 [Compare changes](https://github.com/stacksjs/action-releaser/compare/v1.2.3...v1.2.4)
 
 ### 🧹 Chores
