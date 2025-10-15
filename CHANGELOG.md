@@ -1,3 +1,34 @@
+[Compare changes](https://github.com/stacksjs/action-releaser/compare/v1.2.3...v1.2.4)
+
+### 🧹 Chores
+
+- release v1.2.4 ([6f2ef4e](https://github.com/stacksjs/action-releaser/commit/6f2ef4e))
+- wip ([d814028](https://github.com/stacksjs/action-releaser/commit/d814028))
+
+### Contributors
+
+- Chris <chrisbreuer93@gmail.com>
+
+[Compare changes](https://github.com/stacksjs/action-releaser/compare/v1.2.3...HEAD)
+
+### 🧹 Chores
+
+- wip ([d814028](https://github.com/stacksjs/action-releaser/commit/d814028))
+
+### Contributors
+
+- Chris <chrisbreuer93@gmail.com>
+
+[Compare changes](https://github.com/stacksjs/action-releaser/compare/v1.2.3...HEAD)
+
+### 🧹 Chores
+
+- wip ([d814028](https://github.com/stacksjs/action-releaser/commit/d814028))
+
+### Contributors
+
+- Chris <chrisbreuer93@gmail.com>
+
 [Compare changes](https://github.com/stacksjs/action-releaser/compare/v1.2.2...HEAD)
 
 ### Contributors
