@@ -5,7 +5,8 @@ author: Stacks.js
 inputs:
   files:
     description: List of files to attach to the release
-    required: true
+    required: false
+    default: ''
   token:
     description: GitHub token
     required: false

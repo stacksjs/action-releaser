@@ -13,7 +13,7 @@ export async function run(): Promise<void> {
   try {
     // Get inputs
     const inputs: ActionInputs = {
-      files: core.getInput('files', { required: true }),
+      files: core.getInput('files', { required: false }) || '',
       token: core.getInput('token', { required: false }) || process.env.GITHUB_TOKEN || '',
       tag: core.getInput('tag', { required: false }) || github.context.ref.replace('refs/tags/', ''),
       draft: core.getInput('draft', { required: false }) || 'false',
@@ -34,9 +34,6 @@ export async function run(): Promise<void> {
 
     // Parse the file patterns
     const filePatterns = inputs.files.split('\n').map(pattern => pattern.trim()).filter(Boolean)
-    if (filePatterns.length === 0) {
-      throw new Error('No file patterns provided')
-    }
 
     // Create Octokit client
     const octokit = github.getOctokit(inputs.token)
