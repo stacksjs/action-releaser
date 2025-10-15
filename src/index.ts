@@ -172,12 +172,14 @@ function extractChangelogForVersion(changelogPath: string, version: string): str
     const extracted = result.join('\n').trim()
     if (extracted) {
       core.info(`Successfully extracted ${extracted.split('\n').length} lines from changelog for version ${version}`)
-    } else {
+    }
+    else {
       core.warning(`No changelog content found for version ${version}`)
     }
 
     return extracted
-  } catch (error) {
+  }
+  catch (error) {
     core.warning(`Error extracting changelog: ${error instanceof Error ? error.message : String(error)}`)
     return ''
   }
