@@ -1,3 +1,9 @@
+[Compare changes](https://github.com/stacksjs/action-releaser/compare/v1.2.2...HEAD)
+
+### Contributors
+
+- Chris <chrisbreuer93@gmail.com>
+
 [Compare changes](https://github.com/stacksjs/action-releaser/compare/v1.2.1...HEAD)
 
 ### Contributors
