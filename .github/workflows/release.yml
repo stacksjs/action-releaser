@@ -35,9 +35,8 @@ jobs:
           BUN_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
 
       - name: Create GitHub Release
-        uses: stacksjs/action-releaser@v1.2.2
+        uses: stacksjs/action-releaser@v1.2.3
         with:
-          files: ''
           changelog: CHANGELOG.md
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
