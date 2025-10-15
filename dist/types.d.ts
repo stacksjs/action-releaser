@@ -10,4 +10,16 @@ export declare interface ActionInputs {
   prerelease: string
 
   note: string
+
+  changelog: string
+
+  homebrewFormula: string
+
+  homebrewRepo: string
+
+  homebrewBranch: string
+
+  homebrewPath: string
+
+  homebrewCommitFormat: string
 }

@@ -30,6 +30,11 @@ export interface ActionInputs {
   note: string
 
   /**
+   * Path to CHANGELOG.md file to extract release notes from
+   */
+  changelog: string
+
+  /**
    * Path to the Homebrew formula template file
    */
   homebrewFormula: string

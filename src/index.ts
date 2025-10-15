@@ -19,6 +19,7 @@ export async function run(): Promise<void> {
       draft: core.getInput('draft', { required: false }) || 'false',
       prerelease: core.getInput('prerelease', { required: false }) || 'false',
       note: core.getInput('note', { required: false }) || '',
+      changelog: core.getInput('changelog', { required: false }) || '',
       homebrewFormula: core.getInput('homebrewFormula', { required: false }) || '',
       homebrewRepo: core.getInput('homebrewRepo', { required: false }) || '',
       homebrewBranch: core.getInput('homebrewBranch', { required: false }) || 'main',
@@ -67,12 +68,18 @@ export async function run(): Promise<void> {
     catch {
       // Create a new release if it doesn't exist
       core.info(`No existing release found for tag ${inputs.tag}. Creating a new one.`)
+
+      // Extract changelog content if provided
+      const releaseBody = inputs.changelog
+        ? extractChangelogForVersion(inputs.changelog, inputs.tag) || inputs.note
+        : inputs.note
+
       const { data: newRelease } = await octokit.rest.repos.createRelease({
         owner,
         repo,
         tag_name: inputs.tag,
         name: inputs.tag,
-        body: inputs.note,
+        body: releaseBody,
         draft: inputs.draft === 'true',
         prerelease: inputs.prerelease === 'true',
       })
@@ -124,6 +131,53 @@ export async function run(): Promise<void> {
   }
   catch (error) {
     core.setFailed(error instanceof Error ? error.message : String(error))
+  }
+}
+
+function extractChangelogForVersion(changelogPath: string, version: string): string {
+  try {
+    if (!changelogPath || !fs.existsSync(changelogPath)) {
+      core.warning(`Changelog file not found: ${changelogPath}`)
+      return ''
+    }
+
+    const content = fs.readFileSync(changelogPath, 'utf8')
+    const versionPattern = version.startsWith('v') ? version.substring(1) : version
+
+    // Find the section for this version between [Compare changes] markers
+    const lines = content.split('\n')
+    let capturing = false
+    const result: string[] = []
+
+    for (const line of lines) {
+      // Start capturing when we find the Compare changes link with our version
+      if (line.includes('[Compare changes]') && line.includes(versionPattern)) {
+        capturing = true
+        result.push(line) // Include the Compare changes link
+        continue
+      }
+
+      // Stop capturing when we hit the next Compare changes link
+      if (capturing && line.includes('[Compare changes]')) {
+        break
+      }
+
+      if (capturing) {
+        result.push(line)
+      }
+    }
+
+    const extracted = result.join('\n').trim()
+    if (extracted) {
+      core.info(`Successfully extracted ${extracted.split('\n').length} lines from changelog for version ${version}`)
+    } else {
+      core.warning(`No changelog content found for version ${version}`)
+    }
+
+    return extracted
+  } catch (error) {
+    core.warning(`Error extracting changelog: ${error instanceof Error ? error.message : String(error)}`)
+    return ''
   }
 }
 

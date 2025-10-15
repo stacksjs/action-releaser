@@ -26,6 +26,10 @@ inputs:
     description: Release notes
     required: false
     default: ''
+  changelog:
+    description: Path to CHANGELOG.md file to extract release notes from
+    required: false
+    default: ''
   homebrewFormula:
     description: Path to the Homebrew formula template file
     required: false
