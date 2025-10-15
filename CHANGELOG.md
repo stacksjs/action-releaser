@@ -1,3 +1,8 @@
+[Compare changes](https://github.com/stacksjs/action-releaser/compare/v1.2.1...HEAD)
+
+### Contributors
+
+- Chris <chrisbreuer93@gmail.com>
 
 ## v1.0.0...main
 
@@ -44,7 +49,6 @@
 
 ## ...main
 
-
 ### 🏡 Chore
 
 - Initial commit ([d1d0378](https://github.com/stacksjs/action-releaser/commit/d1d0378))
@@ -54,4 +58,3 @@
 ### ❤️ Contributors
 
 - Chris ([@chrisbbreuer](https://github.com/chrisbbreuer))
-
