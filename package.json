@@ -63,7 +63,7 @@
     "@stacksjs/logsmith": "^0.1.8",
     "@types/bun": "^1.2.13",
     "buddy-bot": "^0.8.8",
-    "bun-git-hooks": "^0.2.19",
+    "bun-git-hooks": "^0.3.1",
     "bun-plugin-dtsx": "^0.21.12",
     "typescript": "^5.8.3"
   },
