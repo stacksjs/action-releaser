@@ -150,15 +150,17 @@ function extractChangelogForVersion(changelogPath: string, version: string): str
     const result: string[] = []
 
     for (const line of lines) {
-      // Start capturing when we find the Compare changes link with our version
-      if (line.includes('[Compare changes]') && line.includes(versionPattern)) {
+      const lineLower = line.toLowerCase()
+
+      // Start capturing when we find the compare changes link with our version (case-insensitive)
+      if (lineLower.includes('[compare changes]') && line.includes(versionPattern)) {
         capturing = true
-        result.push(line) // Include the Compare changes link
+        result.push(line) // Include the compare changes link
         continue
       }
 
-      // Stop capturing when we hit the next Compare changes link
-      if (capturing && line.includes('[Compare changes]')) {
+      // Stop capturing when we hit the next compare changes link
+      if (capturing && lineLower.includes('[compare changes]')) {
         break
       }
 
