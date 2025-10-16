@@ -1,3 +1,32 @@
+[Compare changes](https://github.com/stacksjs/action-releaser/compare/v1.2.5...v1.2.6)
+
+### 🐛 Bug Fixes
+
+- include dist directory in git for GitHub Actions ([b6da289](https://github.com/stacksjs/action-releaser/commit/b6da289))
+
+### 🧹 Chores
+
+- release v1.2.6 ([d42036d](https://github.com/stacksjs/action-releaser/commit/d42036d))
+- update deps ([31c590e](https://github.com/stacksjs/action-releaser/commit/31c590e))
+
+### Contributors
+
+- Chris <chrisbreuer93@gmail.com>
+
+[Compare changes](https://github.com/stacksjs/action-releaser/compare/v1.2.5...HEAD)
+
+### 🐛 Bug Fixes
+
+- include dist directory in git for GitHub Actions ([b6da289](https://github.com/stacksjs/action-releaser/commit/b6da289))
+
+### 🧹 Chores
+
+- update deps ([31c590e](https://github.com/stacksjs/action-releaser/commit/31c590e))
+
+### Contributors
+
+- Chris <chrisbreuer93@gmail.com>
+
 [Compare changes](https://github.com/stacksjs/action-releaser/compare/v1.2.4...v1.2.5)
 
 ### 🐛 Bug Fixes
