@@ -5,10 +5,9 @@
 *.tgz
 coverage
 docs/.vitepress/dist
-# dist  # Commented out so dist files can be committed for GitHub Actions
+# dist files must be committed for GitHub Actions to work
 lib-cov
 logs
 node_modules
 temp
 docs/.vitepress/cache
-/dist
