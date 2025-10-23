@@ -12,11 +12,11 @@ A GitHub Action to easily attach files to a GitHub release.
 
 ## Usage
 
-This action allows you to attach files to a GitHub release using simple glob patterns to specify the files.
+This action allows you to attach files to a GitHub release using **glob patterns** to specify the files.
 
 ```yaml
 - name: Attach Files to Release
-  uses: stacksjs/action-releaser@v1.1.0
+  uses: stacksjs/action-releaser@v1.2.6
   with:
     files: |
       bin/app-linux-x64
@@ -30,6 +30,28 @@ This action allows you to attach files to a GitHub release using simple glob pat
     # draft: false
     # prerelease: false
     # note: 'Release notes'
+```
+
+### Glob Pattern Support
+
+The `files` input supports full glob patterns powered by [`@actions/glob`](https://github.com/actions/toolkit/tree/main/packages/glob):
+
+```yaml
+- name: Attach Files with Glob Patterns
+  uses: stacksjs/action-releaser@v1.2.6
+  with:
+    files: |
+      # Match all .tar.gz files in specific directories
+      ion-binaries/ion-linux-x64/*.tar.gz
+      ion-binaries/ion-linux-arm64/*.tar.gz
+      ion-binaries/ion-darwin-x64/*.tar.gz
+      ion-binaries/ion-darwin-arm64/*.tar.gz
+      # Match all .zip files
+      ion-binaries/ion-windows-x64/*.zip
+      ion-binaries/ion-windows-arm64/*.zip
+      # Or use wildcards
+      dist/**/*.zip
+      build/**/app-*
 ```
 
 ## Inputs
@@ -74,7 +96,7 @@ jobs:
 
       # Create a release and attach files
       - name: Create Release and Attach Files
-        uses: stacksjs/action-releaser@v1.1.0
+        uses: stacksjs/action-releaser@v1.2.6
         with:
           files: |
             dist/app.zip
@@ -116,7 +138,7 @@ jobs:
 
       # Create a release, attach files, and update Homebrew formula
       - name: Create Release, Attach Files, and Update Homebrew Formula
-        uses: stacksjs/action-releaser@v1.1.0
+        uses: stacksjs/action-releaser@v1.2.6
         with:
           files: |
             dist/app-darwin-arm64.tar.gz
@@ -199,7 +221,7 @@ jobs:
 
       # Create a release and attach files
       - name: Create Release and Attach Files
-        uses: stacksjs/action-releaser@v1.1.0
+        uses: stacksjs/action-releaser@v1.2.6
         with:
           files: |
             dist/*.zip
