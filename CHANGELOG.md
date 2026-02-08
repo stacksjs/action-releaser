@@ -1,3 +1,28 @@
+[Compare changes](https://github.com/stacksjs/action-releaser/compare/v1.2.6...v1.2.8)
+
+### 📚 Documentation
+
+- clarify glob pattern support with examples ([e19cdb4](https://github.com/stacksjs/action-releaser/commit/e19cdb4))
+
+### 🧹 Chores
+
+- release v1.2.8 ([48dd1dd](https://github.com/stacksjs/action-releaser/commit/48dd1dd))
+- minor updates ([17ac066](https://github.com/stacksjs/action-releaser/commit/17ac066))
+
+### Contributors
+
+- Chris <chrisbreuer93@gmail.com>
+
+[Compare changes](https://github.com/stacksjs/action-releaser/compare/v1.2.7...HEAD)
+
+### 🧹 Chores
+
+- minor updates ([17ac066](https://github.com/stacksjs/action-releaser/commit/17ac066))
+
+### Contributors
+
+- Chris <chrisbreuer93@gmail.com>
+
 [Compare changes](https://github.com/stacksjs/action-releaser/compare/v1.2.5...v1.2.6)
 
 ### 🐛 Bug Fixes
