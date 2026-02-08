@@ -47,7 +47,7 @@ export async function run(): Promise<void> {
       files.push(...matches)
     }
 
-    if (files.length === 0) {
+    if (files.length === 0 && filePatterns.length > 0) {
       core.warning('No files matched the provided patterns')
     }
 
