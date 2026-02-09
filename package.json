@@ -1,6 +1,6 @@
 {
   "name": "action-releaser",
-  "version": "1.2.8",
+  "version": "1.2.6",
   "description": "GitHub Action to attach files to a release",
   "author": "Chris Breuer <chris@stacksjs.org>",
   "license": "MIT",
@@ -50,7 +50,7 @@
     "typecheck": "bun --bun tsc --noEmit"
   },
   "dependencies": {
-    "@actions/core": "^1.11.1",
+    "@actions/core": "^3.0.0",
     "@actions/github": "^6.0.1",
     "@actions/glob": "^0.5.0"
   },
