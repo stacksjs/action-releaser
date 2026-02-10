@@ -50,7 +50,7 @@
     "typecheck": "bun --bun tsc --noEmit"
   },
   "dependencies": {
-    "@actions/core": "^1.11.1",
+    "@actions/core": "^3.0.0",
     "@actions/github": "^9.0.0",
     "@actions/glob": "^0.6.1"
   },
