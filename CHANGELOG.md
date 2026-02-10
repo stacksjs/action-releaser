@@ -1,3 +1,46 @@
+[Compare changes](https://github.com/stacksjs/action-releaser/compare/v1.2.8...v1.2.9)
+
+### 🧹 Chores
+
+- release v1.2.9 ([5994156](https://github.com/stacksjs/action-releaser/commit/5994156))
+- wip ([96148ba](https://github.com/stacksjs/action-releaser/commit/96148ba))
+- **deps**: update dependency @actions/core to v3 (#145) ([1e5b0eb](https://github.com/stacksjs/action-releaser/commit/1e5b0eb)) ([#145](https://github.com/stacksjs/action-releaser/issues/145), [#145](https://github.com/stacksjs/action-releaser/issues/145))
+- **deps**: update actions/cache action to v5 (#140) ([a848f84](https://github.com/stacksjs/action-releaser/commit/a848f84)) ([#140](https://github.com/stacksjs/action-releaser/issues/140), [#140](https://github.com/stacksjs/action-releaser/issues/140))
+- **deps**: update all non-major dependencies (#9) ([a5d522f](https://github.com/stacksjs/action-releaser/commit/a5d522f)) ([#9](https://github.com/stacksjs/action-releaser/issues/9), [#9](https://github.com/stacksjs/action-releaser/issues/9))
+- **deps**: update actions/checkout action to v6 (#135) ([e12b3a9](https://github.com/stacksjs/action-releaser/commit/e12b3a9)) ([#135](https://github.com/stacksjs/action-releaser/issues/135), [#135](https://github.com/stacksjs/action-releaser/issues/135))
+- remove pantry folder ([7c67bab](https://github.com/stacksjs/action-releaser/commit/7c67bab))
+
+### 📄 Miscellaneous
+
+- Merge pull request #144 from stacksjs/renovate/actions-github-9.x ([2515a75](https://github.com/stacksjs/action-releaser/commit/2515a75)) ([#144](https://github.com/stacksjs/action-releaser/issues/144), [#144](https://github.com/stacksjs/action-releaser/issues/144))
+
+### Contributors
+
+- Chris <chrisbreuer93@gmail.com>
+- glennmichael123 <gtorregosa@gmail.com>
+- renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>
+
+[Compare changes](https://github.com/stacksjs/action-releaser/compare/v1.2.8...HEAD)
+
+### 🧹 Chores
+
+- wip ([96148ba](https://github.com/stacksjs/action-releaser/commit/96148ba))
+- **deps**: update dependency @actions/core to v3 (#145) ([1e5b0eb](https://github.com/stacksjs/action-releaser/commit/1e5b0eb)) ([#145](https://github.com/stacksjs/action-releaser/issues/145), [#145](https://github.com/stacksjs/action-releaser/issues/145))
+- **deps**: update actions/cache action to v5 (#140) ([a848f84](https://github.com/stacksjs/action-releaser/commit/a848f84)) ([#140](https://github.com/stacksjs/action-releaser/issues/140), [#140](https://github.com/stacksjs/action-releaser/issues/140))
+- **deps**: update all non-major dependencies (#9) ([a5d522f](https://github.com/stacksjs/action-releaser/commit/a5d522f)) ([#9](https://github.com/stacksjs/action-releaser/issues/9), [#9](https://github.com/stacksjs/action-releaser/issues/9))
+- **deps**: update actions/checkout action to v6 (#135) ([e12b3a9](https://github.com/stacksjs/action-releaser/commit/e12b3a9)) ([#135](https://github.com/stacksjs/action-releaser/issues/135), [#135](https://github.com/stacksjs/action-releaser/issues/135))
+- remove pantry folder ([7c67bab](https://github.com/stacksjs/action-releaser/commit/7c67bab))
+
+### 📄 Miscellaneous
+
+- Merge pull request #144 from stacksjs/renovate/actions-github-9.x ([2515a75](https://github.com/stacksjs/action-releaser/commit/2515a75)) ([#144](https://github.com/stacksjs/action-releaser/issues/144), [#144](https://github.com/stacksjs/action-releaser/issues/144))
+
+### Contributors
+
+- Chris <chrisbreuer93@gmail.com>
+- glennmichael123 <gtorregosa@gmail.com>
+- renovate[bot] <29139614+renovate[bot]@users.noreply.github.com>
+
 [Compare changes](https://github.com/stacksjs/action-releaser/compare/v1.2.6...v1.2.8)
 
 ### 📚 Documentation
