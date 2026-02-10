@@ -9,7 +9,7 @@ import * as glob from '@actions/glob'
 
 export * from './types'
 
-export async function run(): Promise<void> {
+export async function run(): Promise < void> {
   try {
     // Get inputs
     const inputs: ActionInputs = {
@@ -54,7 +54,7 @@ export async function run(): Promise<void> {
     // Check if release exists
     let releaseId: number
     try {
-      const { data: release } = await octokit.rest.repos.getReleaseByTag({
+      const { data: release } = await octokit.rest.repos.getReleaseByTag( {
         owner,
         repo,
         tag: inputs.tag,
@@ -68,10 +68,10 @@ export async function run(): Promise<void> {
 
       // Extract changelog content if provided
       const releaseBody = inputs.changelog
-        ? extractChangelogForVersion(inputs.changelog, inputs.tag) || inputs.note
-        : inputs.note
+      ? extractChangelogForVersion(inputs.changelog, inputs.tag) || inputs.note
+      : inputs.note
 
-      const { data: newRelease } = await octokit.rest.repos.createRelease({
+      const { data: newRelease } = await octokit.rest.repos.createRelease( {
         owner,
         repo,
         tag_name: inputs.tag,
@@ -95,7 +95,7 @@ export async function run(): Promise<void> {
         const fileContent = fs.readFileSync(file)
         const fileSize = fs.statSync(file).size
 
-        const { data: asset } = await octokit.rest.repos.uploadReleaseAsset({
+        const { data: asset } = await octokit.rest.repos.uploadReleaseAsset( {
           owner,
           repo,
           release_id: releaseId,
@@ -107,7 +107,7 @@ export async function run(): Promise<void> {
           },
         })
 
-        uploadedAssets.push({
+        uploadedAssets.push( {
           name: asset.name,
           browser_download_url: asset.browser_download_url,
         })
@@ -183,10 +183,10 @@ function extractChangelogForVersion(changelogPath: string, version: string): str
 }
 
 async function updateHomebrewFormula(
-  inputs: ActionInputs,
-  assets: { name: string, browser_download_url: string }[],
-  octokit: ReturnType<typeof github.getOctokit>,
-): Promise<void> {
+inputs: ActionInputs,
+assets: { name: string, browser_download_url: string }[],
+octokit: ReturnType < typeof github.getOctokit>,
+): Promise < void> {
   try {
     core.info('Starting Homebrew formula update...')
 
@@ -208,15 +208,15 @@ async function updateHomebrewFormula(
     const version = inputs.tag.startsWith('v') ? inputs.tag.substring(1) : inputs.tag
 
     // Replace version and download URLs in the formula
-    formulaContent = formulaContent.replace(/\{\{(\s*)version(\s*)\}\}/g, version)
+    formulaContent = formulaContent.replace(/\ {\ {(\s*)version(\s*)\}\}/g, version)
 
     // Replace download URLs for each asset
     for (const asset of assets) {
       const placeholder = `{{${asset.name}_url}}`
       if (formulaContent.includes(placeholder)) {
         formulaContent = formulaContent.replace(
-          new RegExp(placeholder, 'g'),
-          asset.browser_download_url,
+        new RegExp(placeholder, 'g'),
+        asset.browser_download_url,
         )
       }
     }
@@ -224,7 +224,7 @@ async function updateHomebrewFormula(
     // Try to get the current file SHA (if it exists)
     let fileSha: string | undefined
     try {
-      const { data: fileData } = await octokit.rest.repos.getContent({
+      const { data: fileData } = await octokit.rest.repos.getContent( {
         owner: homebrewOwner,
         repo: homebrewRepo,
         path: `${inputs.homebrewPath}/${formulaName}.rb`,
@@ -242,11 +242,11 @@ async function updateHomebrewFormula(
 
     // Create commit message
     const commitMessage = inputs.homebrewCommitFormat
-      .replace(/\{\{(\s*)formula(\s*)\}\}/g, formulaName)
-      .replace(/\{\{(\s*)version(\s*)\}\}/g, version)
+    .replace(/\ {\ {(\s*)formula(\s*)\}\}/g, formulaName)
+    .replace(/\ {\ {(\s*)version(\s*)\}\}/g, version)
 
     // Create or update the formula file
-    await octokit.rest.repos.createOrUpdateFileContents({
+    await octokit.rest.repos.createOrUpdateFileContents( {
       owner: homebrewOwner,
       repo: homebrewRepo,
       path: `${inputs.homebrewPath}/${formulaName}.rb`,

@@ -1,61 +1,61 @@
 export interface ActionInputs {
   /**
-   * List of files to attach to the release
-   */
+  * List of files to attach to the release
+  */
   files: string
 
   /**
-   * GitHub token
-   */
+  * GitHub token
+  */
   token: string
 
   /**
-   * The tag name for the release
-   */
+  * The tag name for the release
+  */
   tag: string
 
   /**
-   * Create a draft release
-   */
+  * Create a draft release
+  */
   draft: string
 
   /**
-   * Mark as prerelease
-   */
+  * Mark as prerelease
+  */
   prerelease: string
 
   /**
-   * Release notes
-   */
+  * Release notes
+  */
   note: string
 
   /**
-   * Path to CHANGELOG.md file to extract release notes from
-   */
+  * Path to CHANGELOG.md file to extract release notes from
+  */
   changelog: string
 
   /**
-   * Path to the Homebrew formula template file
-   */
+  * Path to the Homebrew formula template file
+  */
   homebrewFormula: string
 
   /**
-   * Repository to update the Homebrew formula in (format: owner/repo)
-   */
+  * Repository to update the Homebrew formula in (format: owner / repo)
+  */
   homebrewRepo: string
 
   /**
-   * Branch name in the Homebrew repository to commit to
-   */
+  * Branch name in the Homebrew repository to commit to
+  */
   homebrewBranch: string
 
   /**
-   * Path in the Homebrew repository where formulas are stored
-   */
+  * Path in the Homebrew repository where formulas are stored
+  */
   homebrewPath: string
 
   /**
-   * Commit message format for Homebrew formula updates
-   */
+  * Commit message format for Homebrew formula updates
+  */
   homebrewCommitFormat: string
 }
