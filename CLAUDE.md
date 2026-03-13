@@ -2,7 +2,7 @@
 
 ## About
 
-GitHub Action to attach files to a release.
+A GitHub Action that attaches files to GitHub releases using glob patterns. It supports configuring draft/prerelease options, custom release notes, and can automatically update Homebrew formula files in tap repositories with version and URL placeholders.
 
 ## Linting
 
