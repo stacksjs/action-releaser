@@ -16,7 +16,9 @@ action-releaser is a GitHub Action that makes it easy to:
 Add the action to your release workflow:
 
 ```yaml
+
 - name: Attach Files to Release
+
   uses: stacksjs/action-releaser@v1.2.6
   with:
     files: |
@@ -35,24 +37,30 @@ name: Release
 on:
   push:
     tags:
+
       - 'v*'
 
 jobs:
   release:
     runs-on: ubuntu-latest
     steps:
+
       - uses: actions/checkout@v4
 
       - name: Setup Bun
+
         uses: oven-sh/setup-bun@v1
 
       - name: Install dependencies
+
         run: bun install
 
       - name: Build
+
         run: bun run build
 
       - name: Create Release and Attach Files
+
         uses: stacksjs/action-releaser@v1.2.6
         with:
           files: |
@@ -65,17 +73,19 @@ jobs:
 Use glob patterns to match multiple files:
 
 ```yaml
+
 - name: Attach Files with Glob Patterns
+
   uses: stacksjs/action-releaser@v1.2.6
   with:
     files: |
-      # Match all .tar.gz files
+# Match all .tar.gz files
       dist/**/*.tar.gz
 
-      # Match all .zip files
+# Match all .zip files
       dist/**/*.zip
 
-      # Specific patterns
+# Specific patterns
       bin/app-*-x64
       bin/app-*-arm64
 ```
@@ -84,17 +94,17 @@ Use glob patterns to match multiple files:
 
 ```yaml
 files: |
-  # All files in directory
+# All files in directory
   dist/*
 
-  # Recursive match
+# Recursive match
   build/**/*
 
-  # Specific extensions
+# Specific extensions
   *.tar.gz
   *.zip
 
-  # Multiple directories
+# Multiple directories
   ion-binaries/ion-linux-x64/*.tar.gz
   ion-binaries/ion-darwin-x64/*.tar.gz
 ```
@@ -104,11 +114,13 @@ files: |
 ### Release Options
 
 ```yaml
+
 - name: Create Release
+
   uses: stacksjs/action-releaser@v1.2.6
   with:
     files: dist/*
-    tag: ${{ github.ref_name }}    # Default: current tag
+    tag: ${{ github.ref*name }}    # Default: current tag
     draft: false                    # Create as draft
     prerelease: false               # Mark as prerelease
     note: 'Release notes here'      # Release body
@@ -117,11 +129,13 @@ files: |
 ### Custom Token
 
 ```yaml
+
 - name: Create Release
+
   uses: stacksjs/action-releaser@v1.2.6
   with:
     files: dist/*
-    token: ${{ secrets.CUSTOM_TOKEN }}
+    token: ${{ secrets.CUSTOM*TOKEN }}
 ```
 
 ### Changelog Integration
@@ -129,7 +143,9 @@ files: |
 Extract release notes from your CHANGELOG.md:
 
 ```yaml
+
 - name: Create Release
+
   uses: stacksjs/action-releaser@v1.2.6
   with:
     files: dist/*
@@ -143,7 +159,9 @@ The action will find the section matching your release version.
 Automatically update a Homebrew formula when you release:
 
 ```yaml
+
 - name: Release with Homebrew Update
+
   uses: stacksjs/action-releaser@v1.2.6
   with:
     files: |
@@ -154,7 +172,7 @@ Automatically update a Homebrew formula when you release:
     homebrewFormula: .github/homebrew-formula.rb
     homebrewRepo: username/homebrew-tap
     homebrewPath: Formula
-    token: ${{ secrets.HOMEBREW_TOKEN }}
+    token: ${{ secrets.HOMEBREW*TOKEN }}
 ```
 
 ### Formula Template
@@ -167,23 +185,23 @@ class YourApp < Formula
   homepage "https://github.com/username/repo"
   version "{{ version }}"
 
-  on_macos do
+  on*macos do
     if Hardware::CPU.arm?
-      url "{{ app-darwin-arm64.tar.gz_url }}"
-      sha256 "UPDATE_SHA"
+      url "{{ app-darwin-arm64.tar.gz*url }}"
+      sha256 "UPDATE*SHA"
     else
-      url "{{ app-darwin-x64.tar.gz_url }}"
-      sha256 "UPDATE_SHA"
+      url "{{ app-darwin-x64.tar.gz*url }}"
+      sha256 "UPDATE*SHA"
     end
   end
 
-  on_linux do
+  on*linux do
     if Hardware::CPU.arm?
-      url "{{ app-linux-arm64.tar.gz_url }}"
-      sha256 "UPDATE_SHA"
+      url "{{ app-linux-arm64.tar.gz*url }}"
+      sha256 "UPDATE*SHA"
     else
-      url "{{ app-linux-x64.tar.gz_url }}"
-      sha256 "UPDATE_SHA"
+      url "{{ app-linux-x64.tar.gz*url }}"
+      sha256 "UPDATE*SHA"
     end
   end
 
@@ -196,13 +214,14 @@ end
 ### Template Variables
 
 - `{{ version }}` - Version number (without 'v' prefix)
-- `{{ filename_url }}` - Download URL for each uploaded asset
+- `{{ filename*url }}` - Download URL for each uploaded asset
 
 ## Permissions
 
 ### Default Token
 
-The default `GITHUB_TOKEN` works for:
+The default `GITHUB*TOKEN` works for:
+
 - Creating/updating releases in the same repository
 - Uploading release assets
 
@@ -215,7 +234,7 @@ For updating formulas in a different repository, you need a Personal Access Toke
 3. Pass it to the action
 
 ```yaml
-token: ${{ secrets.HOMEBREW_TOKEN }}
+token: ${{ secrets.HOMEBREW*TOKEN }}
 ```
 
 ## Next Steps

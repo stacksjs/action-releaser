@@ -32,5 +32,3 @@ features:
   - title: "Template Variables"
     details: "Dynamic URL and version substitution in Homebrew formulas."
 ---
-
-<Home />

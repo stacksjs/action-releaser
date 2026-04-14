@@ -12,18 +12,22 @@ name: Release
 on:
   push:
     tags:
+
       - 'v*'
 
 jobs:
   release:
     runs-on: ubuntu-latest
     steps:
+
       - uses: actions/checkout@v4
 
       - name: Build
+
         run: npm run build
 
       - name: Create Release
+
         uses: stacksjs/action-releaser@v1.2.6
         with:
           files: dist/*
@@ -39,6 +43,7 @@ name: Release
 on:
   push:
     tags:
+
       - 'v*'
 
 jobs:
@@ -46,25 +51,38 @@ jobs:
     strategy:
       matrix:
         include:
+
           - os: ubuntu-latest
+
             target: linux-x64
+
           - os: ubuntu-latest
+
             target: linux-arm64
+
           - os: macos-latest
+
             target: darwin-x64
+
           - os: macos-latest
+
             target: darwin-arm64
+
           - os: windows-latest
+
             target: windows-x64
 
     runs-on: ${{ matrix.os }}
     steps:
+
       - uses: actions/checkout@v4
 
       - name: Build
+
         run: npm run build -- --target ${{ matrix.target }}
 
       - name: Upload Artifact
+
         uses: actions/upload-artifact@v4
         with:
           name: binary-${{ matrix.target }}
@@ -74,9 +92,11 @@ jobs:
     needs: build
     runs-on: ubuntu-latest
     steps:
+
       - uses: actions/checkout@v4
 
       - name: Download All Artifacts
+
         uses: actions/download-artifact@v4
         with:
           path: binaries
@@ -84,6 +104,7 @@ jobs:
           merge-multiple: true
 
       - name: Create Release
+
         uses: stacksjs/action-releaser@v1.2.6
         with:
           files: binaries/*
@@ -99,20 +120,25 @@ name: Release
 on:
   push:
     tags:
+
       - 'v*'
 
 jobs:
   release:
     runs-on: ubuntu-latest
     steps:
+
       - uses: actions/checkout@v4
+
         with:
           fetch-depth: 0
 
       - name: Build
+
         run: npm run build
 
       - name: Create Release
+
         uses: stacksjs/action-releaser@v1.2.6
         with:
           files: dist/*
@@ -151,15 +177,18 @@ name: Release with Homebrew
 on:
   push:
     tags:
+
       - 'v*'
 
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+
       - uses: actions/checkout@v4
 
       - name: Build all platforms
+
         run: |
           npm run build:darwin-arm64
           npm run build:darwin-x64
@@ -167,6 +196,7 @@ jobs:
           npm run build:linux-x64
 
       - name: Create Archives
+
         run: |
           cd dist
           for f in app-*; do
@@ -174,15 +204,16 @@ jobs:
           done
 
       - name: Release and Update Homebrew
+
         uses: stacksjs/action-releaser@v1.2.6
         with:
           files: dist/*.tar.gz
           homebrewFormula: .github/homebrew-formula.rb
-          homebrewRepo: ${{ github.repository_owner }}/homebrew-tap
+          homebrewRepo: ${{ github.repository*owner }}/homebrew-tap
           homebrewBranch: main
           homebrewPath: Formula
           homebrewCommitFormat: 'chore: update {{ formula }} to {{ version }}'
-          token: ${{ secrets.HOMEBREW_TOKEN }}
+          token: ${{ secrets.HOMEBREW*TOKEN }}
 ```
 
 ### Formula Template Example
@@ -195,17 +226,17 @@ class MyApp < Formula
   version "{{ version }}"
   license "MIT"
 
-  on_macos do
+  on*macos do
     if Hardware::CPU.arm?
-      url "{{ app-darwin-arm64.tar.gz_url }}"
-      sha256 "UPDATE_AFTER_RELEASE"
+      url "{{ app-darwin-arm64.tar.gz*url }}"
+      sha256 "UPDATE*AFTER*RELEASE"
 
       def install
         bin.install "app-darwin-arm64" => "myapp"
       end
     else
-      url "{{ app-darwin-x64.tar.gz_url }}"
-      sha256 "UPDATE_AFTER_RELEASE"
+      url "{{ app-darwin-x64.tar.gz*url }}"
+      sha256 "UPDATE*AFTER*RELEASE"
 
       def install
         bin.install "app-darwin-x64" => "myapp"
@@ -213,17 +244,17 @@ class MyApp < Formula
     end
   end
 
-  on_linux do
+  on*linux do
     if Hardware::CPU.arm?
-      url "{{ app-linux-arm64.tar.gz_url }}"
-      sha256 "UPDATE_AFTER_RELEASE"
+      url "{{ app-linux-arm64.tar.gz*url }}"
+      sha256 "UPDATE*AFTER*RELEASE"
 
       def install
         bin.install "app-linux-arm64" => "myapp"
       end
     else
-      url "{{ app-linux-x64.tar.gz_url }}"
-      sha256 "UPDATE_AFTER_RELEASE"
+      url "{{ app-linux-x64.tar.gz*url }}"
+      sha256 "UPDATE*AFTER*RELEASE"
 
       def install
         bin.install "app-linux-x64" => "myapp"
@@ -247,18 +278,22 @@ name: Release
 on:
   push:
     tags:
+
       - 'v*'
 
 jobs:
   release:
     runs-on: ubuntu-latest
     steps:
+
       - uses: actions/checkout@v4
 
       - name: Build
+
         run: npm run build
 
       - name: Create Release
+
         uses: stacksjs/action-releaser@v1.2.6
         with:
           files: dist/*
@@ -268,13 +303,15 @@ jobs:
 ### Draft Release for Review
 
 ```yaml
+
 - name: Create Draft Release
+
   uses: stacksjs/action-releaser@v1.2.6
   with:
     files: dist/*
     draft: true
     note: |
-      ## Changes in this release
+## Changes in this release
 
       - Feature 1
       - Feature 2
@@ -292,34 +329,40 @@ name: Release
 on:
   push:
     tags:
+
       - 'v*'
 
 jobs:
   release:
     runs-on: ubuntu-latest
     steps:
+
       - uses: actions/checkout@v4
+
         with:
           fetch-depth: 0
 
       - name: Generate Release Notes
+
         id: notes
         run: |
-          # Get commits since last tag
-          PREV_TAG=$(git describe --tags --abbrev=0 HEAD^ 2>/dev/null || echo "")
-          if [ -n "$PREV_TAG" ]; then
-            NOTES=$(git log --pretty=format:"- %s" $PREV_TAG..HEAD)
+# Get commits since last tag
+          PREV*TAG=$(git describe --tags --abbrev=0 HEAD^ 2>/dev/null || echo "")
+          if [ -n "$PREV*TAG" ]; then
+            NOTES=$(git log --pretty=format:"- %s" $PREV*TAG..HEAD)
           else
             NOTES="Initial release"
           fi
-          echo "notes<<EOF" >> $GITHUB_OUTPUT
-          echo "$NOTES" >> $GITHUB_OUTPUT
-          echo "EOF" >> $GITHUB_OUTPUT
+          echo "notes<<EOF" >> $GITHUB*OUTPUT
+          echo "$NOTES" >> $GITHUB*OUTPUT
+          echo "EOF" >> $GITHUB*OUTPUT
 
       - name: Build
+
         run: npm run build
 
       - name: Create Release
+
         uses: stacksjs/action-releaser@v1.2.6
         with:
           files: dist/*
@@ -340,7 +383,9 @@ permissions:
 For Homebrew updates to external repositories:
 
 ```yaml
+
 - name: Release
+
   uses: stacksjs/action-releaser@v1.2.6
   with:
     files: dist/*

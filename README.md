@@ -15,7 +15,9 @@ A GitHub Action to easily attach files to a GitHub release.
 This action allows you to attach files to a GitHub release using **glob patterns** to specify the files.
 
 ```yaml
+
 - name: Attach Files to Release
+
   uses: stacksjs/action-releaser@v1.2.6
   with:
     files: |
@@ -24,12 +26,12 @@ This action allows you to attach files to a GitHub release using **glob patterns
       bin/app-windows-x64.exe
       bin/app-darwin-x64
       bin/app-darwin-arm64
-    # Optional parameters:
-    # token: ${{ secrets.GITHUB_TOKEN }}
-    # tag: ${{ github.ref_name }}
-    # draft: false
-    # prerelease: false
-    # note: 'Release notes'
+# Optional parameters
+# token: ${{ secrets.GITHUB_TOKEN }}
+# tag: ${{ github.ref_name }}
+# draft: false
+# prerelease: false
+# note: 'Release notes'
 ```
 
 ### Glob Pattern Support
@@ -37,21 +39,23 @@ This action allows you to attach files to a GitHub release using **glob patterns
 The `files` input supports full glob patterns powered by [`@actions/glob`](https://github.com/actions/toolkit/tree/main/packages/glob):
 
 ```yaml
+
 - name: Attach Files with Glob Patterns
+
   uses: stacksjs/action-releaser@v1.2.6
   with:
     files: |
-      # Match all .tar.gz files in specific directories
-      ion-binaries/ion-linux-x64/*.tar.gz
-      ion-binaries/ion-linux-arm64/*.tar.gz
-      ion-binaries/ion-darwin-x64/*.tar.gz
-      ion-binaries/ion-darwin-arm64/*.tar.gz
-      # Match all .zip files
-      ion-binaries/ion-windows-x64/*.zip
-      ion-binaries/ion-windows-arm64/*.zip
-      # Or use wildcards
+# Match all .tar.gz files in specific directories
+      ion-binaries/ion-linux-x64/_.tar.gz
+      ion-binaries/ion-linux-arm64/_.tar.gz
+      ion-binaries/ion-darwin-x64/_.tar.gz
+      ion-binaries/ion-darwin-arm64/_.tar.gz
+# Match all .zip files
+      ion-binaries/ion-windows-x64/_.zip
+      ion-binaries/ion-windows-arm64/_.zip
+# Or use wildcards
       dist/**/*.zip
-      build/**/app-*
+      build/**/app-_
 ```
 
 ## Inputs
@@ -80,22 +84,28 @@ name: Releaser
 on:
   push:
     tags:
-      - 'v*'
+
+      - 'v_'
 
 jobs:
   npm:
     runs-on: ubuntu-latest
     steps:
+
       - uses: actions/checkout@v4
 
-      # Build your application
+# Build your application
+
       - name: Build
+
         run: |
           npm ci
           npm run build
 
-      # Create a release and attach files
+# Create a release and attach files
+
       - name: Create Release and Attach Files
+
         uses: stacksjs/action-releaser@v1.2.6
         with:
           files: |
@@ -112,6 +122,7 @@ This action can automatically update a Homebrew formula in a tap repository when
 **Important:** The Homebrew formula update feature requires a GitHub token with write permissions to the target repository. The default `GITHUB_TOKEN` only has access to the current repository, not to external repositories.
 
 To update a formula in a different repository:
+
 1. Create a Personal Access Token (PAT) with the `repo` scope (or at minimum `contents:write`)
 2. Store it as a repository secret (e.g., `HOMEBREW_TOKEN`)
 3. Pass this token to the action using the `token` parameter
@@ -122,22 +133,28 @@ name: Release with Homebrew Update
 on:
   push:
     tags:
+
       - 'v*'
 
 jobs:
   release:
     runs-on: ubuntu-latest
     steps:
+
       - uses: actions/checkout@v4
 
-      # Build your application
+# Build your application
+
       - name: Build
+
         run: |
           npm ci
           npm run build
 
-      # Create a release, attach files, and update Homebrew formula
+# Create a release, attach files, and update Homebrew formula
+
       - name: Create Release, Attach Files, and Update Homebrew Formula
+
         uses: stacksjs/action-releaser@v1.2.6
         with:
           files: |
@@ -193,6 +210,7 @@ end
 ```
 
 **Template Variables:**
+
 - `{{ version }}` - The version number (without the 'v' prefix if present in the tag)
 - `{{ filename_url }}` - The download URL for each uploaded asset (replace 'filename' with the actual filename)
 
@@ -204,27 +222,34 @@ name: Release with Notes
 on:
   push:
     tags:
-      - 'v*'
+
+      - 'v_'
 
 jobs:
   release:
     runs-on: ubuntu-latest
     steps:
+
       - uses: actions/checkout@v4
+
         with:
           fetch-depth: 0
 
-      # Generate release notes
+# Generate release notes
+
       - name: Generate Release Notes
+
         id: release-notes
         run: echo "NOTES=$(./scripts/generate-notes.sh)" >> $GITHUB_OUTPUT
 
-      # Create a release and attach files
+# Create a release and attach files
+
       - name: Create Release and Attach Files
+
         uses: stacksjs/action-releaser@v1.2.6
         with:
           files: |
-            dist/*.zip
+            dist/_.zip
             dist/*.tar.gz
           note: ${{ steps.release-notes.outputs.NOTES }}
           draft: true

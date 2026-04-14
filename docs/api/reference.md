@@ -24,20 +24,20 @@ files: |
 GitHub token for authentication. Defaults to `${{ github.token }}`.
 
 ```yaml
-token: ${{ secrets.GITHUB_TOKEN }}
+token: ${{ secrets.GITHUB*TOKEN }}
 ```
 
 For Homebrew updates to external repositories, use a PAT:
 
 ```yaml
-token: ${{ secrets.HOMEBREW_TOKEN }}
+token: ${{ secrets.HOMEBREW*TOKEN }}
 ```
 
 ### tag
 
 **Required**: No
 
-The tag name for the release. Defaults to `${{ github.ref_name }}`.
+The tag name for the release. Defaults to `${{ github.ref*name }}`.
 
 ```yaml
 tag: v1.2.3
@@ -71,10 +71,11 @@ Release notes / body content.
 
 ```yaml
 note: |
-  ## What's New
+## What's New
 
   - Feature 1
   - Feature 2
+
 ```
 
 ### changelog
@@ -144,7 +145,7 @@ homebrewCommitFormat: 'chore(homebrew): update {{ formula }} to {{ version }}'
 | Variable | Description |
 |----------|-------------|
 | `{{ version }}` | Version number (without 'v' prefix) |
-| `{{ filename_url }}` | Download URL for each uploaded asset |
+| `{{ filename*url }}` | Download URL for each uploaded asset |
 
 ### Commit Format Templates
 
@@ -171,22 +172,22 @@ The action uses `@actions/glob` for pattern matching.
 
 ```yaml
 files: |
-  # All files in dist
+# All files in dist
   dist/*
 
-  # All files recursively
+# All files recursively
   dist/**/*
 
-  # Specific extensions
+# Specific extensions
   dist/**/*.tar.gz
   dist/**/*.zip
 
-  # Platform-specific binaries
+# Platform-specific binaries
   bin/app-linux-*
   bin/app-darwin-*
   bin/app-windows-*
 
-  # Multiple directories
+# Multiple directories
   build/linux/*.tar.gz
   build/darwin/*.tar.gz
   build/windows/*.zip
@@ -231,6 +232,7 @@ name: Release
 on:
   push:
     tags:
+
       - 'v*'
 
 permissions:
@@ -240,38 +242,42 @@ jobs:
   release:
     runs-on: ubuntu-latest
     steps:
+
       - uses: actions/checkout@v4
+
         with:
           fetch-depth: 0
 
       - name: Build
+
         run: npm run build
 
       - name: Create Release
+
         uses: stacksjs/action-releaser@v1.2.6
         with:
-          # Files to upload
+# Files to upload
           files: |
             dist/*.tar.gz
             dist/*.zip
 
-          # Release configuration
-          tag: ${{ github.ref_name }}
+# Release configuration
+          tag: ${{ github.ref*name }}
           draft: false
           prerelease: ${{ contains(github.ref, '-beta') }}
 
-          # Release notes from changelog
+# Release notes from changelog
           changelog: ./CHANGELOG.md
 
-          # Homebrew integration
+# Homebrew integration
           homebrewFormula: .github/formula.rb
           homebrewRepo: myorg/homebrew-tap
           homebrewBranch: main
           homebrewPath: Formula
           homebrewCommitFormat: 'chore: update {{ formula }} to {{ version }}'
 
-          # Token with write access to homebrew repo
-          token: ${{ secrets.HOMEBREW_TOKEN }}
+# Token with write access to homebrew repo
+          token: ${{ secrets.HOMEBREW*TOKEN }}
 ```
 
 ## Error Reference
@@ -289,9 +295,11 @@ jobs:
 ### Token Permissions
 
 For same-repository releases:
+
 - Default `GITHUB_TOKEN` is sufficient
 - Needs `contents: write` permission
 
 For cross-repository Homebrew updates:
+
 - Requires Personal Access Token (PAT)
 - PAT needs `repo` scope
