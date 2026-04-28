@@ -25,7 +25,7 @@ jobs:
         uses: home-lang/pantry/packages/action@main
 
       - name: Install Dependencies
-        run: bun install
+        run: pantry install
 
       - name: Publish
         run: pantry publish --npm --access public
