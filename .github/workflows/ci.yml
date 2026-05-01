@@ -31,6 +31,9 @@ jobs:
           restore-keys: |
             node-modules-
 
+      - name: Setup Pantry
+        uses: home-lang/pantry/packages/action@main
+
       - name: Install Dependencies
         run: pantry install
 
@@ -54,6 +57,9 @@ jobs:
           restore-keys: |
             node-modules-
 
+      - name: Setup Pantry
+        uses: home-lang/pantry/packages/action@main
+
       - name: Install Dependencies
         run: pantry install
 
@@ -76,6 +82,9 @@ jobs:
           key: node-modules-${{ hashFiles('**/bun.lock') }}
           restore-keys: |
             node-modules-
+
+      - name: Setup Pantry
+        uses: home-lang/pantry/packages/action@main
 
       - name: Install Dependencies
         run: pantry install
