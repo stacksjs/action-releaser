@@ -6,28 +6,16 @@ on:
       - 'v*'
 
 jobs:
-  npm:
+  release:
     runs-on: ubuntu-latest
     permissions:
       contents: write
-      id-token: write
 
     steps:
       - name: Checkout
         uses: actions/checkout@v6
         with:
           fetch-depth: 0
-
-      - name: Setup Pantry
-        uses: home-lang/pantry/packages/action@main
-
-      - name: Install Dependencies
-        run: pantry install
-
-      - name: Publish
-        run: pantry publish --npm --access public
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: Create GitHub Release
         uses: ./
