@@ -15,7 +15,7 @@ export async function run(): Promise < void> {
     const inputs: ActionInputs = {
       files: core.getInput('files', { required: false }) || '',
       token: core.getInput('token', { required: false }) || process.env.GITHUB_TOKEN || '',
-      tag: core.getInput('tag', { required: false }) || github.context.ref.replace('refs/tags/', ''),
+      tag: core.getInput('tag', { required: false }) || github.context.ref?.replace('refs/tags/', '') || process.env.GITHUB_REF_NAME || '',
       draft: core.getInput('draft', { required: false }) || 'false',
       prerelease: core.getInput('prerelease', { required: false }) || 'false',
       note: core.getInput('note', { required: false }) || '',
@@ -263,5 +263,8 @@ octokit: ReturnType < typeof github.getOctokit>,
   }
 }
 
-// Run the action
-run()
+// GitHub executes the bundled CommonJS file directly. Keeping imports free of
+// side effects lets the implementation be tested and reused without starting
+// a second release run.
+if (require.main === module)
+  void run()
