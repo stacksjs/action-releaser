@@ -1,3 +1,17 @@
+[Compare changes](https://github.com/stacksjs/action-releaser/compare/v1.2.10...v1.2.11)
+
+## 🐛 Bug Fixes
+
+- **release**: publish GitHub action directly ([0cf36bd](https://github.com/stacksjs/action-releaser/commit/0cf36bd)) _(by Chris <chrisbreuer93@gmail.com>)_
+
+## 🧹 Chores
+
+- release v1.2.11 ([fe1e8d5](https://github.com/stacksjs/action-releaser/commit/fe1e8d5)) _(by Chris <chrisbreuer93@gmail.com>)_
+
+## Contributors
+
+- _Chris <chrisbreuer93@gmail.com>_
+
 [Compare changes](https://github.com/stacksjs/action-releaser/compare/v1.2.9...v1.2.10)
 
 ## 🐛 Bug Fixes
