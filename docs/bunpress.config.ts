@@ -1,7 +1,7 @@
-import type { BunPressConfig } from 'bunpress'
+import type { BunPressConfig } from '@stacksjs/bunpress'
 
 export default {
-  name: 'action-releaser',
+  title: 'action-releaser',
   description: 'A GitHub Action to easily attach files to a GitHub release with Homebrew formula support',
   themeConfig: {
     nav: [
